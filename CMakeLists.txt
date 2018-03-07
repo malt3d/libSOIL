@@ -72,6 +72,7 @@ SET(SOIL_HDRS
     src/SOIL.c
 )
 
+find_package(OpenGL REQUIRED)
 # -------------------------------------------
 # Static Library
 # -------------------------------------------
@@ -94,7 +95,7 @@ install(TARGETS SOIL_Static DESTINATION lib)
 # Dynamic Library
 # -------------------------------------------
 ADD_LIBRARY(SOIL_Dylib SHARED ${SOIL_SRCS} ${SOIL_HDRS})
-TARGET_LINK_LIBRARIES(SOIL_Dylib ${COREFOUNDATION_LIBRARY} ${OPENGL_LIBRARY})
+TARGET_LINK_LIBRARIES(SOIL_Dylib ${COREFOUNDATION_LIBRARY} ${OPENGL_LIBRARY} ${OPENGL_LIBRARIES})
 
 # Build Settings
 SET_TARGET_PROPERTIES(SOIL_Dylib PROPERTIES BUILD_WITH_INSTALL_RPATH 1 INSTALL_NAME_DIR "${CMAKE_INSTALL_NAME_DIR}/lib")
